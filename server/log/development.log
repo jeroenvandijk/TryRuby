@@ -1,0 +1,26 @@
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-24 16:45:10) [GET]
+
+ActionController::RoutingError (No route matches "/intro_files/sick.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-24 16:45:12) [GET]
+  Parameters: {"cmd"=>"!INIT!IRB!"}
+
+ActionController::RoutingError (No route matches "/irb.cgi" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-24 16:45:12) [GET]
+  Parameters: {"cmd"=>"test"}
+
+ActionController::RoutingError (No route matches "/irb.cgi" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
