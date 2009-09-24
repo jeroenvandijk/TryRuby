@@ -24,3 +24,48 @@ ActionController::RoutingError (No route matches "/irb.cgi" with {:method=>:get}
   
 
 Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-24 16:46:57) [GET]
+
+ActionController::RoutingError (No route matches "/intro_files/sick.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ServerController#run (for 127.0.0.1 at 2009-09-24 16:46:59) [GET]
+  Parameters: {"cmd"=>"!INIT!IRB!"}
+
+ActionView::MissingTemplate (Missing template server/run.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ServerController#run (for 127.0.0.1 at 2009-09-24 16:46:59) [GET]
+  Parameters: {"cmd"=>"test"}
+
+ActionView::MissingTemplate (Missing template server/run.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ServerController#run (for 127.0.0.1 at 2009-09-24 16:47:48) [GET]
+  Parameters: {"cmd"=>"test"}
+Completed in 2ms (View: 0, DB: 0) | 200 OK [http://localhost/server/run?cmd=test]
+
+
+Processing ServerController#run (for 127.0.0.1 at 2009-09-24 16:55:24) [GET]
+  Parameters: {"cmd"=>"test"}
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.<<):
+  lib/tryruby_runner.rb:317:in `run_script'
+  app/controllers/server_controller.rb:3:in `run'
+
+Rendered rescues/_trace (28.2ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)

@@ -62,5 +62,5 @@ $session = TryRubyCGISession.new
 # require inc
 # end
  
-print run_script($session, $session.cgi['cmd']).format_output
+# print run_script($session, $session.cgi['cmd']).format_output
 # puts script_results[:output] unless script_results[:output].empty?

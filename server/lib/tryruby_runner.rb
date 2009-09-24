@@ -48,7 +48,7 @@ class TryRubyBaseSession
       if seconds < 60; time = "#{seconds} seconds"
       else; time = "#{seconds / 60} minutes"
       end # if
-      return TryRubyOutput.standard({result: time})
+      return TryRubyOutput.standard({:result => time})
     end
 
     self.current_statement << line
@@ -60,7 +60,7 @@ class TryRubyBaseSession
         eval(line)
       rescue Exception => e
         self << 'reset' #run this method to calm down the interpreter kind of.
-        return TryRubyOutput.error(error: e)
+        return TryRubyOutput.error(:error => e)
       end
     end
 
@@ -118,9 +118,9 @@ EOF
     # result = eval(eval_cmd)
     self.past_commands << line
     if result.is_a?(JavascriptResult) then
-      return TryRubyOutput.javascript(javascript: result.javascript, output: output)
+      return TryRubyOutput.javascript(:javascript => result.javascript, :output => output)
     else
-      return TryRubyOutput.standard(result: result, output: output)
+      return TryRubyOutput.standard(:result => result, :output => output)
     end
   end
 
@@ -227,37 +227,37 @@ class TryRubyOutput
   attr_reader :type, :result, :output, :error, :indent_level, :javascript
  
   def self.standard(params)
-    new_params = { type: :standard, result: params[:result],
-      output: params[:output]}
+    new_params = { :type => :standard, :result => params[:result],
+      :output => params[:output]}
     new_params[:output] ||= ""
     TryRubyOutput.new(new_params)
   end
 
   def self.illegal
-    new_params = { type: :illegal }
+    new_params = { :type => :illegal }
     TryRubyOutput.new(new_params)
   end
  
   def self.javascript(params)
-    new_params = { type: :javascript, javascript: params[:javascript],
-      output: params[:output]}
+    new_params = { :type => :javascript, :javascript => params[:javascript],
+      :output => params[:output]}
     new_params[:output] ||= ""
     TryRubyOutput.new(new_params)
   end
  
   def self.no_output
-    params = { type: :no_output, result: nil, output: "" }
+    params = { :type => :no_output, :result => nil, :output => "" }
     TryRubyOutput.new(params)
   end
  
   def self.line_continuation(level)
-    params = { type: :line_continuation, indent_level: level}
+    params = { :type => :line_continuation, :indent_level => level}
     TryRubyOutput.new(params)
   end
  
   def self.error(params = {})
-    new_params = { type: :error, error: params[:error],
-      output: params[:output]}
+    new_params = { :type => :error, :error => params[:error],
+      :output => params[:output]}
     new_params[:output] ||= ""
     TryRubyOutput.new(new_params)
   end
@@ -326,7 +326,7 @@ class FakeStdout
     @string = ""
   end
   def method_missing(method, *args)
-    @calls << {method: method, args: args}
+    @calls << { :method => method, :args => args}
   end
  
   def write(str)

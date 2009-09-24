@@ -1,0 +1,10 @@
+
+
+Processing ServerController#run (for 127.0.0.1 at 2009-09-24 16:55:55) [GET]
+  Parameters: {"cmd"=>"test"}
+
+NoMethodError (undefined method `<<' for nil:NilClass):
+  lib/tryruby_runner.rb:317:in `run_script'
+  app/controllers/server_controller.rb:3:in `run'
+
+Rendering rescues/layout (internal_server_error)
