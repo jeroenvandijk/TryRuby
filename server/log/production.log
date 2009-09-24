@@ -34,3 +34,11 @@ TryRubyOutput.error(error: e, output: $stdout.to_s)
   lib/tryruby_runner.rb:109:in `eval'
 
 Rendering rescues/layout (internal_server_error)
+
+
+Processing ServerController#run (for 127.0.0.1 at 2009-09-24 17:02:44) [GET]
+  Parameters: {"cmd"=>"test"}
+
+
+Processing ApplicationController#run (for 127.0.0.1 at 2009-09-24 17:02:44) [GET]
+  Parameters: {"cmd"=>"test"}

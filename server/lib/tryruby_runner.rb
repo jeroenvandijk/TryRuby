@@ -98,7 +98,7 @@ result = #{line}
 rescue SecurityError => e
 TryRubyOutput.illegal
 rescue Exception => e
-TryRubyOutput.error(error: e, output: $stdout.to_s)
+TryRubyOutput.error(:error => e, :output => $stdout.to_s)
 end
 EOF
 
