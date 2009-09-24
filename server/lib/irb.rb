@@ -4,22 +4,23 @@
 #i need to fix that, i'll do it later
  
 #require "sandbox"
-require 'cgi'
-require 'popup.rb'
+# require 'cgi'
+# require 'popup.rb'
 require 'stringio'
-require 'cgi/session'
-require 'cgi/session/pstore' # provides CGI::Session::PStore
+# require 'cgi/session'
+# require 'cgi/session/pstore' # provides CGI::Session::PStore
 require 'tryruby_runner.rb'
  
 class TryRubyCGISession < TryRubyBaseSession
   def initialize
-    @session = CGI::Session.new(@cgi = CGI.new,
-                                    'database_manager' => CGI::Session::PStore, # use PStore
-                                    'session_key' => '_rb_sess_id', # custom $session key
-                                    'session_expires' => Time.now + 60 * 60, # 30 minute timeout
-                                    'prefix' => 'pstore_sid_', #Pstore option
-                                    'tmpdir' => 'tmp' # Temp Directory for sessions
-    )
+    @session ||= {}
+    # @session = CGI::Session.new(@cgi = CGI.new,
+    #                                 'database_manager' => CGI::Session::PStore, # use PStore
+    #                                 'session_key' => '_rb_sess_id', # custom $session key
+    #                                 'session_expires' => Time.now + 60 * 60, # 30 minute timeout
+    #                                 'prefix' => 'pstore_sid_', #Pstore option
+    #                                 'tmpdir' => 'tmp' # Temp Directory for sessions
+    # )
     
  
     @session['current_statement'] ||= []
@@ -30,7 +31,7 @@ class TryRubyCGISession < TryRubyBaseSession
     @session['past_commands'] ||= []
     
     @session['current_includes'] ||= []
-    print cgi.header('text/plain')
+    # print cgi.header('text/plain')
   end
  
   def self.make_session_accessors(*names)
