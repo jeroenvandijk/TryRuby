@@ -8,3 +8,29 @@ NoMethodError (undefined method `<<' for nil:NilClass):
   app/controllers/server_controller.rb:3:in `run'
 
 Rendering rescues/layout (internal_server_error)
+
+
+Processing ServerController#run (for 127.0.0.1 at 2009-09-24 16:58:37) [GET]
+  Parameters: {"cmd"=>"test"}
+
+NoMethodError (undefined method `<<' for nil:NilClass):
+  lib/tryruby_runner.rb:317:in `run_script'
+  app/controllers/server_controller.rb:3:in `run'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ServerController#run (for 127.0.0.1 at 2009-09-24 17:00:45) [GET]
+  Parameters: {"cmd"=>"test"}
+
+SyntaxError ((eval):29: compile error
+(eval):28: syntax error, unexpected ':', expecting ')'
+TryRubyOutput.error(error: e, output: $stdout.to_s)
+                          ^
+(eval):28: syntax error, unexpected ':', expecting '='
+TryRubyOutput.error(error: e, output: $stdout.to_s)
+                                     ^
+(eval):28: syntax error, unexpected ')', expecting kEND):
+  lib/tryruby_runner.rb:109:in `eval'
+
+Rendering rescues/layout (internal_server_error)
