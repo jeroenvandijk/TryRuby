@@ -134,61 +134,61 @@ alias :old_require :require
  
 def special_require(require_path)
   path = require_path.sub(/\.rb$/, "")
-  return false unless ['popup'].include? path
-  return false if $session.current_includes.include? path
+  # return false unless ['popup'].include? path
+  # return false if $session.current_includes.include? path
   $session.current_includes << path
   true
 end
  
-def debug_define_all
-eval <<RUBY_EOF
-Object.send(:remove_const, :BlogEntry) if Object.constants.include? :BlogEntry
-class BlogEntry
-attr_accessor :title, :time, :fulltext, :mood
-end
- 
-entry = BlogEntry.new
-entry.title = "Today Mt. Hood Was Stolen!"
-entry.time = Time.now
-entry.mood = :sick
- 
-str = <<EOF
-I can't believe Mt. Hood was stolen!
-I am speechless! It was stolen by a giraffe who drove
-away in his Cadillac Seville very nonchalant!!
-EOF
-
-
-entry.fulltext = str.tr("\n", " ")
-
-  class BlogEntry
-    def initialize( title, mood, fulltext)
-      @time = Time.now
-      @title, @mood, @fulltext = title, mood, fulltext
-    end
-  end
-
-  entry2 = BlogEntry.new("I Left my Hoodie on the Mountain!",
-            :confused, "I am never going back to that mountain and I " +
-                       "hope a giraffe steals it." )
-
-  blog = [entry, entry2]
-
-  require 'popup'
-  $blog_popup = Popup.make do
-    h1 'My Blog'
-    list do
-      blog.each do |entry|
-        h2 entry.title
-        p entry.fulltext
-      end
-    end
-  end
-
-  nil
-
-RUBY_EOF
-end
+# def debug_define_all
+# eval <<RUBY_EOF
+# Object.send(:remove_const, :BlogEntry) if Object.constants.include? :BlogEntry
+# class BlogEntry
+# attr_accessor :title, :time, :fulltext, :mood
+# end
+#  
+# entry = BlogEntry.new
+# entry.title = "Today Mt. Hood Was Stolen!"
+# entry.time = Time.now
+# entry.mood = :sick
+#  
+# str = <<EOF
+# I can't believe Mt. Hood was stolen!
+# I am speechless! It was stolen by a giraffe who drove
+# away in his Cadillac Seville very nonchalant!!
+# EOF
+# 
+# 
+# entry.fulltext = str.tr("\n", " ")
+# 
+#   class BlogEntry
+#     def initialize( title, mood, fulltext)
+#       @time = Time.now
+#       @title, @mood, @fulltext = title, mood, fulltext
+#     end
+#   end
+# 
+#   entry2 = BlogEntry.new("I Left my Hoodie on the Mountain!",
+#             :confused, "I am never going back to that mountain and I " +
+#                        "hope a giraffe steals it." )
+# 
+#   blog = [entry, entry2]
+# 
+#   require 'popup'
+#   $blog_popup = Popup.make do
+#     h1 'My Blog'
+#     list do
+#       blog.each do |entry|
+#         h2 entry.title
+#         p entry.fulltext
+#       end
+#     end
+#   end
+# 
+#   nil
+# 
+# RUBY_EOF
+# end
  
     
 class JavascriptResult
@@ -206,22 +206,22 @@ class Regexp
 end
 
  
-$common_code = <<EOF
-poem = <<POEM_EOF
-My toast has flown from my hand
-And my toast has gone to the
-moon.
-But when I saw it on television,
-Planting our flag on Halley's
-comet,
-More still did I want to eat it.
-POEM_EOF
- 
-def require(str)
- special_require(str)
-end
- 
-EOF
+# $common_code = <<EOF
+# poem = <<POEM_EOF
+# My toast has flown from my hand
+# And my toast has gone to the
+# moon.
+# But when I saw it on television,
+# Planting our flag on Halley's
+# comet,
+# More still did I want to eat it.
+# POEM_EOF
+#  
+# def require(str)
+#  special_require(str)
+# end
+#  
+# EOF
  
 class TryRubyOutput
   attr_reader :type, :result, :output, :error, :indent_level, :javascript
