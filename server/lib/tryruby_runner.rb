@@ -130,15 +130,15 @@ EOF
     
 end
  
-alias :old_require :require
- 
-def special_require(require_path)
-  path = require_path.sub(/\.rb$/, "")
-  # return false unless ['popup'].include? path
-  # return false if $session.current_includes.include? path
-  $session.current_includes << path
-  true
-end
+# alias :old_require :require
+#  
+# def special_require(require_path)
+#   # path = require_path.sub(/\.rb$/, "")
+#   # return false unless ['popup'].include? path
+#   # return false if $session.current_includes.include? path
+#   # $session.current_includes << path
+#   true
+# end
  
 # def debug_define_all
 # eval <<RUBY_EOF
@@ -314,7 +314,16 @@ end
 $original_stdout = $stdout
  
 def run_script(session, line)
-  session << line
+  output =  begin
+              eval(line)
+            rescue StandardError => e
+              e
+            end
+            
+  return output.inspect
+              
+    
+  # session << line
 
  
 end #run_script
